@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.project_gearup.Home
 import com.example.project_gearup.R
 import com.example.project_gearup.models.Motorcycle
+import com.example.project_gearup.motocycle_info
 
 class RVAdapterMotorcycle(
     private val context: Home,
@@ -32,6 +33,11 @@ class RVAdapterMotorcycle(
             motorcycleClass = view.findViewById(R.id.tv_class)
             cylinderCapacity = view.findViewById(R.id.tv_cyl_capacity)
             motor = view.findViewById(R.id.tv_motor)
+            imageMotorcycle.setOnClickListener { v ->
+                val position: Int = recyclerView.getChildAdapterPosition(v)
+                context.idItemSelected = position
+                context.openActivityMotorcycle(motocycle_info::class.java)
+            }
         }
     }
     override fun onCreateViewHolder(

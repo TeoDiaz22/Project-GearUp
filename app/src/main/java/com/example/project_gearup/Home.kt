@@ -1,7 +1,9 @@
 package com.example.project_gearup
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project_gearup.models.Motorcycle
@@ -11,16 +13,23 @@ import com.google.firebase.ktx.Firebase
 
 class Home : AppCompatActivity() {
     val motorcycles = arrayListOf<Motorcycle>()
+    var idItemSelected = 0
+    lateinit var adapter : RVAdapterMotorcycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        getMotorcycles()
+        //getMotorcycles()
         initRVMotorcyle()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getMotorcycles()
     }
 
     fun initRVMotorcyle(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_motorcycles)
-        val adapter = RVAdapterMotorcycle(
+        adapter = RVAdapterMotorcycle(
             this,
             motorcycles,
             recyclerView
@@ -28,12 +37,24 @@ class Home : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.itemAnimator = androidx.recyclerview.widget.DefaultItemAnimator()
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter.notifyDataSetChanged()
+        //adapter.notifyDataSetChanged()
+    }
+
+    fun openActivityMotorcycle(
+        classToOpen: Class<*>
+    ){
+        val intent = Intent(this, classToOpen)
+
+        //val client = Database.listClients[idItemSelected]
+        val motorcycle = motorcycles[idItemSelected]
+        intent.putExtra("motorcycle", motorcycle)
+        startActivity(intent)
     }
 
     fun getMotorcycles(){
         val db = Firebase.firestore
         val refMotorcycles = db.collection("motorcycles")
+        motorcycles.clear()
         refMotorcycles.get().addOnSuccessListener {
             result ->
             for (document in result){
@@ -52,6 +73,7 @@ class Home : AppCompatActivity() {
                 )
                 motorcycles.add(motorcycle)
             }
+            adapter.notifyDataSetChanged()
         }.addOnFailureListener {  }
     }
 }
