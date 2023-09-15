@@ -55,4 +55,182 @@
         android:textSize="20dp"
         />
 
+    <LinearLayout
+        android:id="@+id/ll_precio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_motorcycle_title"
+        android:layout_marginTop="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$15.999"
+            android:textColor="@color/orange_app"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_motor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_precio"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motor:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_motor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4T, 2-cylinder, DOHC"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_cilindraje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_motor"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cilindraje:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="60dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_cilindraje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="451cc"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_transmision"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_cilindraje"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transmisión:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="44dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_transmision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6-speed, return shift"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_suspension"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_transmision"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suspensión:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="48dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_suspension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telescopic/Twin shocks"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_brake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_suspension"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frenos:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="77dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_brake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABS"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_capacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_brake"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capacidad:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="55dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.4 gal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_capacity"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción:"
+            android:textStyle="bold"
+            android:paddingStart="80dp"
+            android:paddingEnd="48dp" />
+        <TextView
+            android:id="@+id/tv_motocycle_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moto de asfalto para uso en ciudad"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
