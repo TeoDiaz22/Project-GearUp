@@ -39,7 +39,7 @@ class RVAdapterMotorcycle(
     ): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(
-                R.layout.rv_motorcycle,
+                R.layout.recycler_view_motorcycle,
                 parent,
                 false
             )
