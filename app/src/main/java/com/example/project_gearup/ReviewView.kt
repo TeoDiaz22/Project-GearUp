@@ -120,7 +120,7 @@ class ReviewView : AppCompatActivity() {
         builder.setPositiveButton("Aceptar") { dialog, which ->
             val review = DataBase.listReviews.removeAt(idItemSelected)
             adapter.notifyDataSetChanged()
-            delete(review.id!!, idMotorcycle.toString())
+            delete(review.id!!, idMotorcycle)
         }
         builder.setNegativeButton("Cancelar", null)
         val dialog = builder.create()
@@ -135,7 +135,7 @@ class ReviewView : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (queryDocumentSnapshot in result){
                     val review = Review(
-                        queryDocumentSnapshot.data["id"].toString().toInt(),
+                        queryDocumentSnapshot.data["id"].toString(),
                         queryDocumentSnapshot.data["user"].toString(),
                         queryDocumentSnapshot.data["title"].toString(),
                         queryDocumentSnapshot.data["review"].toString()
@@ -147,10 +147,10 @@ class ReviewView : AppCompatActivity() {
             .addOnFailureListener {  }
     }
 
-    fun delete(id: Int, refMotorcycle: String){
+    fun delete(id: String, refMotorcycle: String){
         val db = Firebase.firestore
         val payments = db.collection("motorcycles").document(refMotorcycle).collection("reviews")
-        payments.document(id.toString())
+        payments.document(id)
             .delete()
     }
 

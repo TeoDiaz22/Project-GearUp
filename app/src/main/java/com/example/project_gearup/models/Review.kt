@@ -1,7 +1,7 @@
 package com.example.project_gearup.models
 
 class Review (
-    var id: Int?,
+    var id: String,
     var user: String,
     var title: String,
     var review: String

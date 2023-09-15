@@ -32,6 +32,7 @@ class motocycle_info : AppCompatActivity() {
         setContentView(R.layout.activity_motocycle_info)
         motorcycle = intent.getParcelableExtra("motorcycle",Motorcycle::class.java)
         val motorcycleId = intent.getStringExtra("motorcycleId").toString()
+        println(motorcycleId)
         motorcycleImg = findViewById<ImageView>(R.id.img_motorcycle)
         motorcycleTitle = findViewById<TextView>(R.id.tv_motorcycle_title)
         motorcyclePrice = findViewById<TextView>(R.id.tv_motocycle_price)
