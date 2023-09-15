@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.project_gearup.Home
 import com.example.project_gearup.R
 import com.example.project_gearup.models.Motorcycle
@@ -48,7 +49,8 @@ class RVAdapterMotorcycle(
 
     override fun onBindViewHolder(holder: RVAdapterMotorcycle.MyViewHolder, position: Int) {
         val actualMotorcycle = this.listMotorcycles[position]
-        holder.imageMotorcycle.setImageResource(actualMotorcycle.image)
+        //holder.imageMotorcycle.setImageResource(actualMotorcycle.image)
+        Glide.with(holder.imageMotorcycle.context).load(actualMotorcycle.image).into(holder.imageMotorcycle)
         holder.model.text = actualMotorcycle.model
         holder.price.text = actualMotorcycle.price.toString()
         holder.motorcycleClass.text = actualMotorcycle.getMotorcycleClasses()

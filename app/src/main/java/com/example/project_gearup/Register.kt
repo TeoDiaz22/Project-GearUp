@@ -46,7 +46,7 @@ class Register : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            //reload()
+            openActivity(Home::class.java)
         }
     }
 
@@ -61,7 +61,7 @@ class Register : AppCompatActivity() {
                         Toast.LENGTH_SHORT,
                     ).show()
                     val user = auth.currentUser
-
+                    openActivity(Home::class.java)
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.

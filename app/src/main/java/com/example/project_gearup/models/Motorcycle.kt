@@ -16,6 +16,8 @@ class Motorcycle(
     var fuelCapacity: Double,
     var description: String?
 ): Parcelable {
+
+
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -30,6 +32,7 @@ class Motorcycle(
         parcel.readString()
     ) {
     }
+
 
     fun getMotorcycleClasses(): String {
         var motorcycleClasses = ""
