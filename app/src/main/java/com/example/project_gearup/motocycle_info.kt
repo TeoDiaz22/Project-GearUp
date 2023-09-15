@@ -15,46 +15,57 @@ import com.example.project_gearup.models.Motorcycle
 class motocycle_info : AppCompatActivity() {
 
     var motorcycle : Motorcycle? = null
-    val motorcycleImg = findViewById<ImageView>(R.id.img_motorcycle)
-    val motorcycleTitle = findViewById<TextView>(R.id.tv_motorcycle_title)
-    val motorcyclePrice = findViewById<TextView>(R.id.tv_motocycle_price)
-    val motorcycleMotor = findViewById<TextView>(R.id.tv_motocycle_motor)
-    val motorcycleCicli = findViewById<TextView>(R.id.tv_motocycle_cilindraje)
-    val motorcycleTrans = findViewById<TextView>(R.id.tv_motocycle_transmision)
-    val motorcycleSusp = findViewById<TextView>(R.id.tv_motocycle_suspension)
-    val motorcycleBrake = findViewById<TextView>(R.id.tv_motocycle_brake)
-    val motorcycleCapa = findViewById<TextView>(R.id.tv_motocycle_capacity)
-    val motorcycleDescrip = findViewById<TextView>(R.id.tv_motocycle_description)
-
+    var motorcycleImg : ImageView? = null
+    var motorcycleTitle : TextView? = null
+    var motorcyclePrice : TextView? = null
+    var motorcycleMotor : TextView? = null
+    var motorcycleCicli : TextView? = null
+    var motorcycleTrans : TextView? = null
+    var motorcycleSusp : TextView? = null
+    var motorcycleBrake : TextView? = null
+    var motorcycleCapa : TextView? = null
+    var motorcycleDescrip : TextView? = null
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_motocycle_info)
         motorcycle = intent.getParcelableExtra("motorcycle",Motorcycle::class.java)
+        val motorcycleId = intent.getStringExtra("motorcycleId").toString()
+        motorcycleImg = findViewById<ImageView>(R.id.img_motorcycle)
+        motorcycleTitle = findViewById<TextView>(R.id.tv_motorcycle_title)
+        motorcyclePrice = findViewById<TextView>(R.id.tv_motocycle_price)
+        motorcycleMotor = findViewById<TextView>(R.id.tv_motocycle_motor)
+        motorcycleCicli = findViewById<TextView>(R.id.tv_motocycle_cilindraje)
+        motorcycleTrans = findViewById<TextView>(R.id.tv_motocycle_transmision)
+        motorcycleSusp = findViewById<TextView>(R.id.tv_motocycle_suspension)
+        motorcycleBrake = findViewById<TextView>(R.id.tv_motocycle_brake)
+        motorcycleCapa = findViewById<TextView>(R.id.tv_motocycle_capacity)
+        motorcycleDescrip = findViewById<TextView>(R.id.tv_motocycle_description)
         fillData()
         val btnBack = findViewById<ImageButton>(R.id.btn_back)
         btnBack.setOnClickListener{ finish() }
         val btnReview = findViewById<Button>(R.id.btn_review)
-        btnReview.setOnClickListener { openParameterActivity(Review::class.java) }
+        btnReview.setOnClickListener { openParameterActivity(Review::class.java,motorcycleId) }
     }
 
     private fun fillData(){
-        Glide.with(motorcycleImg.context).load(motorcycle?.image).load(motorcycleImg)
-        motorcycleTitle.text = motorcycle?.model!!.uppercase()
-        motorcyclePrice.text = '$' + motorcycle?.price.toString()
-        motorcycleMotor.text = motorcycle?.motor
-        motorcycleCicli.text = motorcycle?.cylinderCapacity.toString() + "cc"
-        motorcycleTrans.text = motorcycle?.transmission
-        motorcycleSusp.text = motorcycle?.suspension
-        motorcycleBrake.text = motorcycle?.brakes
-        motorcycleCapa.text = motorcycle?.fuelCapacity.toString() + "gal"
-        motorcycleDescrip.text = motorcycle?.description
+        Glide.with(motorcycleImg!!.context).load(motorcycle?.image).load(motorcycleImg)
+        motorcycleTitle!!.text = motorcycle?.model!!.uppercase()
+        motorcyclePrice!!.text = '$' + motorcycle?.price.toString()
+        motorcycleMotor!!.text = motorcycle?.motor
+        motorcycleCicli!!.text = motorcycle?.cylinderCapacity.toString() + "cc"
+        motorcycleTrans!!.text = motorcycle?.transmission
+        motorcycleSusp!!.text = motorcycle?.suspension
+        motorcycleBrake!!.text = motorcycle?.brakes
+        motorcycleCapa!!.text = motorcycle?.fuelCapacity.toString() + "gal"
+        motorcycleDescrip!!.text = motorcycle?.description
     }
 
-    fun openParameterActivity(clase: Class<*>, id: Int){
+    fun openParameterActivity(clase: Class<*>, motorcycleid: String){
         val intent = Intent(this,clase)
-        intent.putExtra("id",id)
+        intent.putExtra("motorcycle",motorcycle)
+        intent.putExtra("motorcycleId",motorcycleid)
         startActivity(intent)
     }
 }

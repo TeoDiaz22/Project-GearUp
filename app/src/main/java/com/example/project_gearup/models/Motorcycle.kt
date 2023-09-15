@@ -9,13 +9,13 @@ class Motorcycle(
     var price: Double,
     var cylinderCapacity: Int,
     var motor: String?,
-    var motorcycleClass: ArrayList<String>,
+    var motorcycleClass: String?,
     var transmission: String?,
     var suspension: String?,
     var brakes: String?,
     var fuelCapacity: Double,
     var description: String?
-): Parcelable {
+): Parcelable{
 
 
     constructor(parcel: Parcel) : this(
@@ -24,7 +24,7 @@ class Motorcycle(
         parcel.readDouble(),
         parcel.readInt(),
         parcel.readString(),
-        TODO("motorcycleClass"),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -33,21 +33,13 @@ class Motorcycle(
     ) {
     }
 
-
-    fun getMotorcycleClasses(): String {
-        var motorcycleClasses = ""
-        for (motorcycleClass in this.motorcycleClass) {
-            motorcycleClasses += "$motorcycleClass |"
-        }
-        return motorcycleClasses.dropLast(2)
-    }
-
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(image)
         parcel.writeString(model)
         parcel.writeDouble(price)
         parcel.writeInt(cylinderCapacity)
         parcel.writeString(motor)
+        parcel.writeString(motorcycleClass)
         parcel.writeString(transmission)
         parcel.writeString(suspension)
         parcel.writeString(brakes)
@@ -68,4 +60,5 @@ class Motorcycle(
             return arrayOfNulls(size)
         }
     }
+
 }

@@ -33,11 +33,11 @@ class RVAdapterMotorcycle(
             motorcycleClass = view.findViewById(R.id.tv_class)
             cylinderCapacity = view.findViewById(R.id.tv_cyl_capacity)
             motor = view.findViewById(R.id.tv_motor)
-            imageMotorcycle.setOnClickListener { v ->
-                val position: Int = recyclerView.getChildAdapterPosition(v)
-                context.idItemSelected = position
+            itemView.setOnClickListener {
+                context.idItemSelected =  this.layoutPosition
                 context.openActivityMotorcycle(motocycle_info::class.java)
             }
+
         }
     }
     override fun onCreateViewHolder(
@@ -59,7 +59,7 @@ class RVAdapterMotorcycle(
         Glide.with(holder.imageMotorcycle.context).load(actualMotorcycle.image).into(holder.imageMotorcycle)
         holder.model.text = actualMotorcycle.model
         holder.price.text = actualMotorcycle.price.toString()
-        holder.motorcycleClass.text = actualMotorcycle.getMotorcycleClasses()
+        holder.motorcycleClass.text = actualMotorcycle.motorcycleClass
         holder.cylinderCapacity.text = actualMotorcycle.cylinderCapacity.toString()
         holder.motor.text = actualMotorcycle.motor
     }

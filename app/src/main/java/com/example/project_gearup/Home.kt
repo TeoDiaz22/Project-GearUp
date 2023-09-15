@@ -15,6 +15,7 @@ class Home : AppCompatActivity() {
     val motorcycles = arrayListOf<Motorcycle>()
     var idItemSelected = 0
     lateinit var adapter : RVAdapterMotorcycle
+    var motorcyclesIds = arrayListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -47,7 +48,9 @@ class Home : AppCompatActivity() {
 
         //val client = Database.listClients[idItemSelected]
         val motorcycle = motorcycles[idItemSelected]
+        val motorcycleId = motorcyclesIds[idItemSelected]
         intent.putExtra("motorcycle", motorcycle)
+        intent.putExtra("motorcycleId",motorcycleId)
         startActivity(intent)
     }
 
@@ -64,13 +67,14 @@ class Home : AppCompatActivity() {
                     document.data["price"].toString().toDouble(),
                     document.data["cylinderCapacity"].toString().toInt(),
                     document.data["motor"].toString(),
-                    document.data["motorcycleClass"] as ArrayList<String>,
+                    document.data["motorcycleClass"].toString(),
                     document.data["transmission"].toString(),
                     document.data["suspension"].toString(),
                     document.data["brakes"].toString(),
                     document.data["fuelCapacity"].toString().toDouble(),
                     document.data["description"].toString()
                 )
+                motorcyclesIds.add(document.id)
                 motorcycles.add(motorcycle)
             }
             adapter.notifyDataSetChanged()
