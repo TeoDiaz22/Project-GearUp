@@ -36,7 +36,7 @@ class motocycle_info : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btn_back)
         btnBack.setOnClickListener{ finish() }
         val btnReview = findViewById<Button>(R.id.btn_review)
-        btnReview.setOnClickListener { openParameterActivity(Review::class.java) }
+        btnReview.setOnClickListener { openParameterActivity(ReviewView::class.java) }
     }
 
     private fun fillData(){
