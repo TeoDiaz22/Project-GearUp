@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ProjectGearUp"
         tools:targetApi="31">
         <activity
+            android:name=".Review"
+            android:exported="false" />
+        <activity
             android:name=".CreateEditReview"
             android:exported="false" />
         <activity
