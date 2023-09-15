@@ -233,4 +233,14 @@
             android:text="Moto de asfalto para uso en ciudad"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver reseñas"
+        app:layout_constraintTop_toBottomOf="@+id/ll_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

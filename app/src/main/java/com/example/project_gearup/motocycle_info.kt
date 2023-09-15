@@ -1,8 +1,11 @@
 package com.example.project_gearup
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -30,6 +33,10 @@ class motocycle_info : AppCompatActivity() {
         setContentView(R.layout.activity_motocycle_info)
         motorcycle = intent.getParcelableExtra("motorcycle",Motorcycle::class.java)
         fillData()
+        val btnBack = findViewById<ImageButton>(R.id.btn_back)
+        btnBack.setOnClickListener{ finish() }
+        val btnReview = findViewById<Button>(R.id.btn_review)
+        btnReview.setOnClickListener { openParameterActivity(Review::class.java) }
     }
 
     private fun fillData(){
@@ -43,5 +50,11 @@ class motocycle_info : AppCompatActivity() {
         motorcycleBrake.text = motorcycle?.brakes
         motorcycleCapa.text = motorcycle?.fuelCapacity.toString() + "gal"
         motorcycleDescrip.text = motorcycle?.description
+    }
+
+    fun openParameterActivity(clase: Class<*>, id: Int){
+        val intent = Intent(this,clase)
+        intent.putExtra("id",id)
+        startActivity(intent)
     }
 }
