@@ -28,7 +28,7 @@ class CreateEditReview : AppCompatActivity() {
         val description = findViewById<EditText>(R.id.et_review)
         val buttonCreateEditReview = findViewById<TextView>(R.id.btn_create_edit_review)
 
-        /*if (create) {
+        if (create) {
             buttonCreateEditReview.setOnClickListener {
                 val review = Review(
                     (System.currentTimeMillis() % 10000).toString(),
@@ -36,18 +36,16 @@ class CreateEditReview : AppCompatActivity() {
                     title.text.toString(),
                     description.text.toString(),
                 )
-                Database.listPayments.add(payment)
-                createOrUpdate(payment, idClient)
+                DataBase.listReviews.add(review)
+                //createOrUpdate(review, idMotorcycle)
             }
         }else{
-            val payment = Database.listPayments[intent.getIntExtra("idItemSelected", 0)]
-            title.text = "Editar el pago del mes: ${payment.month}"
+
+            /*val review = DataBase.listReviews[intent.getIntExtra("idItemSelected", 0)]
+            .text =
+            description.text = motorcycle.
             buttonCreateEditReview.text = "Actualizar"
-            month.setSelection(resources.getStringArray(R.array.months).indexOf(payment.month))
-            date.text = payment.date.toString()
-            amount.setText(payment.amount.toString())
-            inCash.isChecked = payment.inCash
-            isLate.isChecked = payment.isLate
+
 
             buttonCreateEditReview.setOnClickListener {
                 payment.month = month.selectedItem.toString()
@@ -58,7 +56,7 @@ class CreateEditReview : AppCompatActivity() {
 
                 Database.listPayments[intent.getIntExtra("idItemSelected", 0)] = payment
                 createOrUpdate(payment, idClient)
-            }
-        }*/
+            }*/
+        }
     }
 }
