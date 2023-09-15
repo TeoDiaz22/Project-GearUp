@@ -2,6 +2,7 @@ package com.example.project_gearup
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import com.example.project_gearup.models.Motorcycle
 import com.example.project_gearup.models.Review
@@ -23,7 +25,7 @@ import java.time.LocalDate
 class ReviewView : AppCompatActivity() {
 
     var idItemSelected = 0
-    var idMotorcycle = 0
+    var idMotorcycle = ""
     lateinit var motorcycle: Motorcycle
     lateinit var listViewMotorcycles: ListView
     lateinit var adapter : ArrayAdapter<Review>
@@ -40,13 +42,14 @@ class ReviewView : AppCompatActivity() {
             }
         }
     }
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
 
         //var client = DataBase.list[intent.getIntExtra("idItemSelected", 0)]
-        motorcycle = intent.getParcelableExtra("motorcycle")!! as Motorcycle
-        idMotorcycle = motorcycle.id!!
+        motorcycle = intent.getParcelableExtra("motorcycle",Motorcycle::class.java)!!
+        idMotorcycle = intent.getStringExtra("motorcycleId").toString()
 
         val buttonAdd = findViewById<Button>(R.id.btn_add_review)
         buttonAdd.setOnClickListener {
