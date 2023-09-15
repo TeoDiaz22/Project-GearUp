@@ -108,6 +108,7 @@ class ReviewView : AppCompatActivity() {
         val intent = Intent(this, classToOpen)
         intent.putExtra("create", create)
         intent.putExtra("idItemSelected", idItemSelected)
+        intent.putExtra("idMotorcycle", idMotorcycle)
         intent.putExtra("motorcycle", motorcycle)
         callback.launch(intent)
         //startActivity(intent)
